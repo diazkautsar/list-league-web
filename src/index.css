@@ -5,6 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('https://asset.indosport.com/article/image/q/80/178475/buah_pisang-169.jpg?w=750&h=423');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {
@@ -12,7 +15,22 @@ code {
     monospace;
 }
 
-.container {
+nav {
+  background-color: black;
+  color: white;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.nav-home {
+  text-decoration: none;
+  color: white;
+}
+
+.league {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,25 +38,24 @@ code {
   align-items: center;
 }
 
-h1 {
-  color: black;
-}
-
-.list {
-  margin: 50px 50px;
+.league .list {
+  padding: 15px;
+  margin: 10px 10px;
   cursor: pointer;
-  /* box-shadow: 0 1px 6px 0 rgba(49,53,59,0.12); */
+  box-shadow: 0 1px 6px 0 rgba(49,53,59,0.12);
   -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
 	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
-	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+  /* background-color: rgb(85, 206, 74);
+  color: white; */
 }
 
-.list div {
-  padding: 25px;
-  /* border: 1px solid white; */
-  width: 40vh;
-  margin: 0 auto;
-  color: black;
+.card-list-team {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .logo img {
@@ -46,6 +63,81 @@ h1 {
   height: 40vh;
 }
 
-.league button {
+.list-team {
+  margin: 50px 50px;
   cursor: pointer;
+  box-shadow: 0 1px 6px 0 rgba(49,53,59,0.12);
+  -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+	box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.search-league {
+  margin: 10px;
+}
+
+.search-league input {
+  width: 150vh;
+  height: 35px;
+  border-radius: 5px;
+  padding-left: 15px;
+}
+
+.loading {
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  background-color: cornsilk;
+  margin: 20px 50px;
+  border-radius: 8px;
+}
+
+.profile-side-left {
+  padding: 10px;
+}
+
+.up {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.up-logo img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}
+
+.up-jersey img {
+  width: 200px;
+  height: 200px;
+  padding: 10px;
+}
+
+.down {
+  padding: 10px;
+}
+
+.down img {
+  width: 400px;
+  height: 200px;
+  padding: 10px;
+}
+
+.profile-side-right {
+  padding: 10px;
+}
+
+.desc {
+  padding: 10px;
+}
+
+.favorite {
+  padding: 10px;
 }

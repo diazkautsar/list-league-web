@@ -1,10 +1,18 @@
 import React from 'react'
-import useFetcher from '../hooks/useFetcher'
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 export default function ListLeague (props) {
+    let history = useHistory();
+    const dispatch = useDispatch();
+
     function ListAllTeam(id) {
-        props.setPage('teams')
         props.setAllTeam(id)
+        history.push(`/${id}`)
+        dispatch({
+            type: 'LEAGUE_NAME',
+            msg: `${props.listed.strLeague}`
+        })
     }
 
     return (

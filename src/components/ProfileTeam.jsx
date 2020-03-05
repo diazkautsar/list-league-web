@@ -1,27 +1,56 @@
 import React from 'react'
 import useFetcher from '../hooks/useFetcher'
 import Loading from './Loading'
+import { useParams, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
-function ProfileTeam (props) {
-    const [error, loading, data] = useFetcher(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${props.profileTeam}`)
-    
-    
-    if (loading || !data.teams) {
-        return <Loading/>
-    }
+function ProfileTeam() {
+    let { idTeam } = useParams();
+    const history = useHistory();
+    const dispatch = useDispatch()
+
+    const [error, loading, data] = useFetcher(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`)
+
+    if (loading || !data.teams) return <Loading />
+
     const team = data.teams[0]
-    
+
+    const addToFavorite = () => {
+        history.push('/favorite')
+        dispatch({
+            type: 'FAVORITE_TEAM',
+            msg: [
+                {
+                    name: team.strTeam,
+                    logo: team.strTeamBadge
+                }
+            ]
+        })
+    }
+
     return (
         <>
-            <div className="Profile">
-                <div className="Profile-Logo">
-                    <img src={team.strTeamBadge}></img>
+            <div className="profile">
+                <div className="profile-side-left">
+                    <div className="up">
+                        <div className="up-logo">
+                            <img src={team.strTeamBadge} alt=""></img>
+                        </div>
+                        <div className="up-jersey">
+                            <img src={team.strTeamJersey} alt=""></img>
+                        </div>
+                    </div>
+                    <div className="down">
+                        <img src={team.strStadiumThumb} alt=""></img>
+                    </div>
                 </div>
-                <div className="Profile-Stadium">
-                    <img src={team.strStadiumThumb}></img>
-                </div>
-                <div className="Profile-Jersey">
-                    <img src={team.strTeamJersey}></img>
+                <div className="profile-side-right">
+                    <div className="desc">
+                        {team.strDescriptionEN}
+                    </div>
+                    {/* <div className="favorite">
+                        <button className="btn btn-primary" onClick={() => addToFavorite()}>ADD TO FAVORITE</button>
+                    </div> */}
                 </div>
             </div>
         </>

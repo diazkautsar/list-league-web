@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
 export default function useFetcher(url) {
@@ -21,7 +21,6 @@ export default function useFetcher(url) {
             .finally(() => {
                 setLoading(false)
             })
-
     }, [])
 
     return [error, loading, data]
