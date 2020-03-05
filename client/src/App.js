@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,7 +13,7 @@ import Leagues from './components/Leagues'
 import ProfileTeam from './components/ProfileTeam'
 import ListTeam from './components/ListTeam'
 import Navbar from './components/Navbar'
-// import Favorite from './components/Favorite.jsx'
+import Favorite from './components/Favorite.jsx'
 
 function App() {
   const [allTeam, setAllTeam] = useState('')
@@ -27,15 +27,15 @@ function App() {
             <Route exact path="/">
               <Leagues setAllTeam={setAllTeam} />
             </Route>
+            <Route exact path='/favorite'>
+              <Favorite />
+            </Route>
             <Route exact path="/:idLeague">
               <ListTeam allTeam={allTeam} />
             </Route>
             <Route path={`/:idLeague/:idTeam`}>
               <ProfileTeam />
             </Route>
-            {/* <Route exact path='/favorite'>
-              <Favorite />
-            </Route> */}
           </Switch>
         </Router>
       </Provider>

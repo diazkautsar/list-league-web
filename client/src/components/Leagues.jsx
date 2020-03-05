@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
 
 import useFetcher from '../hooks/useFetcher'
 import Loading from './Loading';
@@ -11,15 +10,6 @@ export default function Leagues(props) {
     const [filteredLeague, setFilteredLeague] = useState([])
     const [inputLeague, setInputLeague] = useState('')
     const [isSearching, setIsSearching] = useState(false)
-
-    const dispatch = useDispatch()
-    const counter = useSelector(state => state.counter)
-
-    const addCounter = () => {
-        dispatch({
-            type: 'ADD_NUMBER'
-        })
-    }
 
     const filterLeague = () => {
         setIsSearching(true)
@@ -39,12 +29,6 @@ export default function Leagues(props) {
 
     return (
         <>
-            <div className="redux">
-                <h4>
-                    {counter}
-                </h4>
-                <button onClick={addCounter}>TRY REDUX</button>
-            </div>
             <div className="search-league">
                 <input 
                 type="text" 

@@ -1,0 +1,49 @@
+{
+  "favorite": [
+    {
+      "id": "133676",
+      "name": "Juventus",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/dd6d6q1535186317.png"
+    },
+    {
+      "id": "133610",
+      "name": "Chelsea",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/yvwvtu1448813215.png"
+    },
+    {
+      "id": "133598",
+      "name": "Blackburn",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/rvryut1448810814.png"
+    },
+    {
+      "id": "133602",
+      "name": "Liverpool",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/uvxuqq1448813372.png"
+    },
+    {
+      "id": "133601",
+      "name": "Aston Villa",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/aofmzk1565427581.png"
+    },
+    {
+      "id": "134777",
+      "name": "Newcastle",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/rqvwxt1448813396.png"
+    },
+    {
+      "id": "133636",
+      "name": "West Ham",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/yutyxs1467459956.png"
+    },
+    {
+      "id": "133619",
+      "name": "Brighton",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/ywypts1448810904.png"
+    },
+    {
+      "id": "134301",
+      "name": "Bournemouth",
+      "logo": "https://www.thesportsdb.com/images/media/team/badge/y08nak1534071116.png"
+    }
+  ]
+}

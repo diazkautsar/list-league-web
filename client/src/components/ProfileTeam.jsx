@@ -1,31 +1,36 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useFetcher from '../hooks/useFetcher'
 import Loading from './Loading'
-import { useParams, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addFavorite, checkFavoriteTeam } from '../store/actionCreators/favoriteCreator'
 
 function ProfileTeam() {
     let { idTeam } = useParams();
-    const history = useHistory();
-    const dispatch = useDispatch()
-
+    const dispatch = useDispatch();
+    const loadingFromStore = useSelector(state => state.favorite.loading)
+    const isFavoriteTeam = useSelector(state => state.favorite.isFavoriteTeam)
     const [error, loading, data] = useFetcher(`https://www.thesportsdb.com/api/v1/json/1/lookupteam.php?id=${idTeam}`)
 
-    if (loading || !data.teams) return <Loading />
+    useEffect(() => {
+        dispatch(checkFavoriteTeam({
+            idTeam
+        }))
+    }, [isFavoriteTeam])
+
+    if (loading || !data.teams || loadingFromStore) return <Loading />
 
     const team = data.teams[0]
 
     const addToFavorite = () => {
-        history.push('/favorite')
-        dispatch({
-            type: 'FAVORITE_TEAM',
-            msg: [
-                {
-                    name: team.strTeam,
-                    logo: team.strTeamBadge
-                }
-            ]
-        })
+        dispatch(addFavorite({
+            id: team.idTeam,
+            name: team.strTeam,
+            logo: team.strTeamBadge
+        }))
+        dispatch(checkFavoriteTeam({
+            idTeam: team.idTeam
+        }))
     }
 
     return (
@@ -48,9 +53,11 @@ function ProfileTeam() {
                     <div className="desc">
                         {team.strDescriptionEN}
                     </div>
-                    {/* <div className="favorite">
-                        <button className="btn btn-primary" onClick={() => addToFavorite()}>ADD TO FAVORITE</button>
-                    </div> */}
+                    {isFavoriteTeam ? <div><i class="fas fa-heart" style={{fontSize: "20px"}}>YOUR FAVORITE TEAM</i></div> :
+                        <div className="favorite">
+                            <button className="btn btn-primary" onClick={() => addToFavorite()}>ADD TO FAVORITE</button>
+                        </div>
+                    }
                 </div>
             </div>
         </>

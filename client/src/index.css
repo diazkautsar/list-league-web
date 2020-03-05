@@ -16,7 +16,7 @@ code {
 }
 
 nav {
-  background-color: black;
+  /* background-color: black; */
   color: white;
   height: 50px;
   display: flex;
