@@ -40,7 +40,7 @@ export const getFavorite = () => {
                 dispatch(setFavorite(data))
             })
             .catch(err => {
-                console.log(err)
+                dispatch(setError('Invalid Server Error'))
             })
             .finally(() => {
                 dispatch(setLoading(false))
@@ -50,8 +50,6 @@ export const getFavorite = () => {
 
 export const addFavorite = (value) => {
     return function (dispatch) {
-        // dispatch(setLoading(true))
-
         Axios({
             method: 'post',
             url: 'http://localhost:3000/favorite',
@@ -61,22 +59,15 @@ export const addFavorite = (value) => {
                 logo: value.logo
             }
         })
-            .then(() =>{
-
-            })
+            .then(() =>{})
             .catch(err => {
                 dispatch(setError('add to favorite failed'))
-            })
-            .finally(() => {
-                // dispatch(setLoading(false))
             })
     }
 }
 
 export const checkFavoriteTeam = (value) => {
     return function (dispatch) {
-        // dispatch(setLoading(true))
-
         Axios({
             method: 'get',
             url: 'http://localhost:3000/favorite?id=' + value.idTeam
@@ -91,9 +82,6 @@ export const checkFavoriteTeam = (value) => {
             .catch(err => {
                 console.log(err)
             })
-            .finally(() => {
-                // dispatch(setLoading(false))
-            })
 
     }
 }
@@ -102,5 +90,21 @@ export const setIsFavoriteTeam = (value) => {
     return {
         type: IS_FAVORITE_TEAM,
         payload: value
+    }
+}
+
+export const removeFromFavorite = (value) => {
+    return function (dispatch) {
+        Axios({
+            method: 'delete',
+            url: 'http://localhost:3000/favorite/' + value
+        })
+            .then(() => {
+                console.log('berhasil di delete')
+                dispatch(getFavorite())
+            })
+            .catch(err => {
+                dispatch(setError('invalid server error'))
+            })
     }
 }

@@ -11,15 +11,11 @@ export default function ListLeague (props) {
     function ListAllTeam(id) {
         props.setAllTeam(id)
         history.push(`/${id}`)
-        // dispatch({
-        //     type: 'LEAGUE_NAME',
-        //     msg: `${props.listed.strLeague}`
-        // })
         dispatch(leagueName(props.listed.strLeague))
     }
 
     return (
-        <div className="list" onClick={() => ListAllTeam(props.listed.idLeague)}>
+        <div className="list" onClick={() => ListAllTeam(props.listed.idLeague)} style={{ fontWeight: "bold", fontSize: "25px" }}>
             {props.listed.strLeague}
         </div>
     )

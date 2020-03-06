@@ -21,7 +21,7 @@ export default function useFetcher(url) {
             .finally(() => {
                 setLoading(false)
             })
-    }, [])
+    }, [url])
 
     return [error, loading, data]
 }

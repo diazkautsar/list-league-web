@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import useFetcher from '../hooks/useFetcher'
 import Loading from './Loading'
+import Error from './Error'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite, checkFavoriteTeam } from '../store/actionCreators/favoriteCreator'
@@ -20,6 +21,8 @@ function ProfileTeam() {
 
     if (loading || !data.teams || loadingFromStore) return <Loading />
 
+    if (error) return <Error />
+
     const team = data.teams[0]
 
     const addToFavorite = () => {
@@ -32,6 +35,8 @@ function ProfileTeam() {
             idTeam: team.idTeam
         }))
     }
+
+    console.log(team)
 
     return (
         <>
@@ -53,7 +58,7 @@ function ProfileTeam() {
                     <div className="desc">
                         {team.strDescriptionEN}
                     </div>
-                    {isFavoriteTeam ? <div><i class="fas fa-heart" style={{fontSize: "20px"}}>YOUR FAVORITE TEAM</i></div> :
+                    {isFavoriteTeam ? <div><i className="fas fa-heart" style={{fontSize: "20px"}}>YOUR FAVORITE TEAM</i></div> :
                         <div className="favorite">
                             <button className="btn btn-primary" onClick={() => addToFavorite()}>ADD TO FAVORITE</button>
                         </div>

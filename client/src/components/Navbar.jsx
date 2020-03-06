@@ -20,7 +20,7 @@ export default function Navbar() {
                 <nav style={{backgroundColor: value.color}}>
                     <div><Link className="nav-home" onClick={handleChangeHeader} to="/">HOME</Link></div>
                     <div>{titleNavbar}</div>
-                    <div><Link className="nav-home" to="/favorite" >FAVORITE</Link></div>
+                    <div><Link className="nav-home" onClick={handleChangeHeader} to="/favorite" >FAVORITE</Link></div>
                 </nav>
             )}
         </NavbarColor.Consumer>
