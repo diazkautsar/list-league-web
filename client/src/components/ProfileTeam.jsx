@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addFavorite, checkFavoriteTeam } from '../store/actionCreators/favoriteCreator'
 
 function ProfileTeam() {
-    let { idTeam } = useParams();
+    const { idTeam } = useParams();
     const dispatch = useDispatch();
     const loadingFromStore = useSelector(state => state.favorite.loading)
     const isFavoriteTeam = useSelector(state => state.favorite.isFavoriteTeam)
@@ -56,7 +56,7 @@ function ProfileTeam() {
                 </div>
                 <div className="profile-side-right">
                     <div className="desc">
-                        {team.strDescriptionEN}
+                        <p align="justify">{team.strDescriptionEN}</p>
                     </div>
                     {isFavoriteTeam ? <div><i className="fas fa-heart" style={{fontSize: "20px"}}>YOUR FAVORITE TEAM</i></div> :
                         <div className="favorite">

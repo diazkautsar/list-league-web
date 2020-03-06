@@ -18,10 +18,15 @@ import Favorite from './components/Favorite.jsx'
 
 function App() {
   const [allTeam, setAllTeam] = useState('')
+  const [color, setColor] = useState('black')
+
+  const changeColor = (value) => {
+      setColor(value)
+  }
 
   return (
     <div className="App">
-      <NavbarColorContext.Provider value={{color: 'black'}}>
+      <NavbarColorContext.Provider value={{color, changeColor}}>
         <Provider store={store}>
           <Router>
             <Navbar />

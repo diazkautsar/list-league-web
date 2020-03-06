@@ -16,7 +16,6 @@ code {
 }
 
 nav {
-  /* background-color: black; */
   color: white;
   height: 50px;
   display: flex;
@@ -152,4 +151,10 @@ nav {
 
 .favorite {
   padding: 10px;
+}
+
+.nav-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
